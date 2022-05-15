@@ -43,8 +43,9 @@ module.exports.randomJoke = (req, res) => {
   Joke.find()
     .then(allTheJokes => res.json({
       joke: allTheJokes[Math.floor(allTheJokes.length * Math.random())]
-      .catch(err => res.json({ message: "Something went wrong with the random joke", error: err }))
     }))
+    .catch(err => res.json({ message: "Something went wrong with the random joke", error: err }))
+    // needed to seperate the .catch and the .then on different levels to resolve .catch is not a function
 }
 
 // DEF AN ERROR HAPPENING WITH MY randomJOKE FUNCTION 
